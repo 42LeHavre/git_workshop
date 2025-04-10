@@ -14,6 +14,19 @@ void print_card(const Card *card) {
         default:       suit = "?"; break;
     }
 
-    // TODO: Implémenter une conversion pour afficher "Valet", "Dame" et "Roi" pour les valeurs 11, 12, 13
-    printf("[%d%s] ", card->value, suit);
+	switch (card->value)
+	{
+	case (11):
+    	printf("[%s%s] ", "Valet", suit);
+		break;
+	case (12):
+    	printf("[%s%s] ", "Dame", suit);
+		break;
+	case (13):
+    	printf("[%s%s] ", "Roi", suit);
+		break;
+	default:
+	    printf("[%d%s] ", card->value, suit);
+		break;
+	}
 }
