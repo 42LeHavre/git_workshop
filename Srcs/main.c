@@ -13,6 +13,14 @@ void print_menu() {
     printf("Votre choix: ");
 }
 
+void	print_end_result(int result)
+{
+	if (result == 1)
+		printf("Victoire du joueur !");
+	else 
+		printf("Defaite du joueur !");
+}
+
 int main() {
     Game game;
     int choice;
@@ -33,13 +41,10 @@ int main() {
                 // TODO: Vérifier immédiatement si le score du joueur dépasse 21 après avoir tiré une carte
                     player_hit(&game);
             display_game(&game);
-            // TODO: Si le score dépasse 21, déclarer la défaite et terminer la partie
             break;
             case 2:
                 dealer_play(&game);
             display_game(&game);
-            // TODO: Comparer les scores du joueur et du croupier pour déterminer le gagnant du jeu de base
-            // TODO: Afficher un message de victoire/défaite en fonction du résultat
             choice = 0;  // Fin de la partie après que le joueur a choisi de rester
             break;
             case 0:
