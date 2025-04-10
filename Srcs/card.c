@@ -15,5 +15,15 @@ void print_card(const Card *card) {
     }
 
     // TODO: Implémenter une conversion pour afficher "Valet", "Dame" et "Roi" pour les valeurs 11, 12, 13
+    if (card->value == 11) {
+        printf("[Valet%s] ", suit);
+        return;
+    } else if (card->value == 12) {
+        printf("[Dame%s] ", suit);
+        return;
+    } else if (card->value == 13) {
+        printf("[Roi%s] ", suit);
+        return;
+    }
     printf("[%d%s] ", card->value, suit);
 }
