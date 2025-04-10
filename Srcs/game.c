@@ -29,12 +29,18 @@ void display_game(const Game *game) {
     }
     printf("\nScore du joueur: %d\n", compute_score(game->player_cards, game->player_card_count));
     // TODO: Afficher un message clair si le joueur est "busted" (score > 21)
+	if (compute_score(game->player_cards, game->player_card_count) > 21) {
+		printf("Le score du joueur est superieur a 21 : Busted\n");
+	}
 }
 
 void player_hit(Game *game) {
     if (game->player_card_count < 10) {
         game->player_cards[game->player_card_count++] = draw_card(&game->deck);
         // TODO: Après chaque tirage, vérifier si le score du joueur atteint ou dépasse 21
+		if (compute_score(game->player_cards, game->player_card_count) > 21) {
+			printf("Le score du joueur est superieur a 21 : Busted\n");
+		}
     } else {
         printf("Nombre maximum de cartes atteint pour le joueur.\n");
         // TODO: Gérer la situation de manière à ne pas dépasser la limite prévue par les règles de base
@@ -47,6 +53,9 @@ void dealer_play(Game *game) {
         if (game->dealer_card_count < 10) {
             game->dealer_cards[game->dealer_card_count++] = draw_card(&game->deck);
             // TODO: Vérifier après chaque tirage si le croupier dépasse 21 et afficher "Busted" si c'est le cas
+			if (compute_score(game->dealer_cards, game->dealer_card_count) > 21) {
+				printf("Le score du croupier est superieur a 21 : Busted\n");
+			}
         } else {
             printf("Nombre maximum de cartes atteint pour le croupier.\n");
             // TODO: Gérer la limite de cartes pour le croupier conformément aux règles du jeu

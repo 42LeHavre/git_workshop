@@ -34,6 +34,10 @@ int main() {
                     player_hit(&game);
             display_game(&game);
             // TODO: Si le score dépasse 21, déclarer la défaite et terminer la partie
+			if (compute_score(game.player_cards, game.player_card_count) > 21) {
+				printf("Le joueur a perdu\n");
+				choice = 0;
+			}
             break;
             case 2:
                 dealer_play(&game);
